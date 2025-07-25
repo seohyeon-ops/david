@@ -19,7 +19,7 @@ def main():
         
         print("Sorted:",end=' ')
         for i in num:
-            print("%.1f" %i,end =' ')
+            print("%f" %i,end =' ')
             
         
     except ValueError:
