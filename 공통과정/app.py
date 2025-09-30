@@ -1,15 +1,22 @@
 from flask import Flask, render_template
+import socket   # socket 모듈 추가
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "Hello World!"   # 기본 경로(/)에서 "Hello World!" 출력
+    # hostname 값 설정
+    if app.debug:
+        hostname = '컴퓨터(인스턴스) : ' + socket.gethostname()
+    else:
+        hostname = ' '
+    # index.html 템플릿에 computername 값 전달
+    return render_template('index.html', computername=hostname)
 
-# 추가한 부분
+# /menu 라우트
 @app.route('/menu')
 def menu():
-    return render_template('menu.html')  # /menu 접속 시 menu.html 보여줌
+    return render_template('menu.html') 
 
 if __name__ == '__main__':
-    app.run(debug=True)  # Flask 서버 실행
+    app.run(debug=True)  
