@@ -13,9 +13,7 @@ def index():
     # render_templates에 computername 인자를 포함
     return render_template('index.html', computername=hostname)
 
-@app.route('/test1')
-def test1():
-    return 'This is test1'
+
 
 # /menu 라우트
 @app.route('/menu')
